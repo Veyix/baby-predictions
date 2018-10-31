@@ -1,0 +1,42 @@
+@page
+@model MakePredictionModel
+@{
+    ViewData["Title"] = "Make a prediction";
+}
+
+<div class="alert alert-warning">
+    Note that you cannot change your predictions once they have been submitted
+</div>
+
+<form method="post">
+    <div class="form-control">
+        <label for="forename">Forename&nbsp;</label>
+        <input type="text" id="forename" name="forename" placeholder="Forename" alt="Enter your first name" />
+    </div>
+
+    <div class="form-control">
+        <label for="surname">Surname&nbsp;</label>
+        <input type="text" id="surname" name="surname" placeholder="Surname" alt="Enter your last name" />
+    </div>
+
+    <div class="form-control">
+        <label for="gender">Gender</label>
+        <input type="radio" id="gender" name="gender" value="Male" checked alt="What gender do you think the baby will be?" />&nbsp;Male
+        <input type="radio" id="gender" name="gender" value="Female" alt="What gender do you think the baby will be?" />&nbsp;Female
+    </div>
+
+    <div class="form-control">
+        <label for="birthdateandtime">Birth Date</label>
+        <input type="datetime" id="birthdateandtime" name="birthdateandtime" alt="What date and time do you think the baby will be born at?" />
+    </div>
+
+    <div class="form-control">
+        <label for="weightinpounds">Birth Weight</label>
+        <input type="number" id="weightinpounds" name="weightinpounds" placeholder="0" alt="What do you think the baby's weight will be at birth?" /> pounds and
+        <input type="number" id="weightinounces" name="weightinounces" placeholder="0" alt="What do you think the baby's weight will be at birth?" /> ounces
+    </div>
+
+    <button type="submit" class="btn btn-default" alt="Click submit your predictions and enter into the competition">
+        Submit
+    </button>
+</form>

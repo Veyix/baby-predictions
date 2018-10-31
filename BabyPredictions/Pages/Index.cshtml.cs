@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BabyPredictions.Domain;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,18 +7,18 @@ namespace BabyPredictions.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly PredictionRepository _predictionRepository;
+        private readonly DatabaseContext _context;
 
-        public IndexModel(PredictionRepository predictionRepository)
+        public IndexModel(DatabaseContext context)
         {
-            _predictionRepository = predictionRepository;
+            _context = context;
         }
 
         public IEnumerable<Prediction> Predictions { get; private set; }
 
         public void OnGet()
         {
-            Predictions = _predictionRepository.GetPredictions();
+            Predictions = _context.Set<Prediction>().ToArray();
         }
     }
 }
