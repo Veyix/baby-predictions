@@ -10,42 +10,91 @@
 
 <form method="post">
     <h3>Your details</h3>
-    <div class="form-control">
+    <div class="form-group">
         <label for="forename">Forename&nbsp;</label>
-        <input type="text" id="forename" name="forename" placeholder="Forename" alt="Enter your first name" />
+        <input type="text"
+               id="forename"
+               name="forename"
+               placeholder="Forename"
+               alt="Enter your first name" class="form-control" />
+        <span asp-validation-for="Forename" class="alert-danger"></span>
     </div>
 
-    <div class="form-control">
+    <div class="form-group">
         <label for="surname">Surname&nbsp;</label>
-        <input type="text" id="surname" name="surname" placeholder="Surname" alt="Enter your last name" />
+        <input type="text"
+               id="surname"
+               name="surname"
+               placeholder="Surname"
+               alt="Enter your last name"
+               class="form-control" />
+        <span asp-validation-for="Surname" class="alert-danger"></span>
     </div>
 
     <h3>Your predictions</h3>
-    <div class="form-control">
+    <div class="form-group">
         <label for="gender">Gender</label>
-        <input type="radio" id="gender" name="gender" value="Male" checked alt="What gender do you think the baby will be?" />&nbsp;Male
-        <input type="radio" id="gender" name="gender" value="Female" alt="What gender do you think the baby will be?" />&nbsp;Female
+        <input type="radio"
+               id="gender"
+               name="gender"
+               value="Male"
+               checked
+               alt="What gender do you think the baby will be?" />&nbsp;Male
+        <input type="radio"
+               id="gender"
+               name="gender"
+               value="Female"
+               alt="What gender do you think the baby will be?" />&nbsp;Female
+        <span asp-validation-for="Gender" class="alert-danger"></span>
     </div>
 
-    <div class="form-control">
+    <div class="form-group">
         <label for="birthdate">Birth Date</label>
-        <input type="date" id="birthdate" name="birthdate" placeholder="dd/MM/yyyy" alt="What date do you think the baby will be born on?" />
+        <input type="date"
+               id="birthdate"
+               class="form-control"
+               name="birthdate"
+               placeholder="dd/MM/yyyy"
+               alt="What date do you think the baby will be born on?" />
         <span class="text-muted">e.g. 13/11/2018</span>
+        <span asp-validation-for="BirthDate" class="alert-danger"></span>
     </div>
 
-    <div class="form-control">
+    <div class="form-group">
         <label for="birthtime">Birth Time</label>
-        <input type="time" id="birthtime" name="birthtime" placeholder="HH:mm" alt="What time do you think the baby will be born at?" />
+        <input type="time"
+               class="form-control"
+               id="birthtime"
+               name="birthtime"
+               placeholder="HH:mm"
+               alt="What time do you think the baby will be born at?" />
+        <span asp-validation-for="BirthTime" class="alert-danger"></span>
         <span class="text-muted">e.g. 17:30 - note this is a 24-hour time format</span>
     </div>
 
-    <div class="form-control">
+    <div class="form-group">
         <label for="weightinpounds">Birth Weight</label>
-        <input type="number" id="weightinpounds" name="weightinpounds" placeholder="0" alt="What do you think the baby's weight will be at birth?" /> pounds and
-        <input type="number" id="weightinounces" name="weightinounces" placeholder="0" alt="What do you think the baby's weight will be at birth?" /> ounces
+        <input type="number"
+               class="form-control"
+               id="weightinpounds"
+               name="weightinpounds"
+               placeholder="0 pounds"
+               alt="What do you think the baby's weight will be at birth?" />
+
+        <input type="number"
+               class="form-control"
+               id="weightinounces"
+               name="weightinounces"
+               placeholder="0 ounces"
+               alt="What do you think the baby's weight will be at birth?" />
+
+        <span asp-validation-for="WeightInPounds" class="alert-danger"></span>
+        <span asp-validation-for="WeightInOunces" class="alert-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-default" alt="Click submit your predictions and enter into the competition">
+    <button type="submit"
+            class="btn btn-primary"
+            alt="Click submit your predictions and enter into the competition">
         Submit
     </button>
 </form>
