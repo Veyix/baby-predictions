@@ -25,7 +25,10 @@ namespace BabyPredictions.Pages
         public Gender Gender { get; set; }
 
         [BindProperty]
-        public DateTimeOffset BirthDateAndTime { get; set; }
+        public DateTimeOffset BirthDate { get; set; }
+
+        [BindProperty]
+        public TimeSpan BirthTime { get; set; }
 
         [BindProperty]
         public int WeightInPounds { get; set; }
@@ -40,7 +43,7 @@ namespace BabyPredictions.Pages
                 Forename = Forename,
                 Surname = Surname,
                 Gender = Gender,
-                BirthDate = BirthDateAndTime,
+                BirthDate = BirthDate.Add(BirthTime),
                 BirthWeightInOunces = (WeightInPounds * 16) + WeightInOunces
             };
 

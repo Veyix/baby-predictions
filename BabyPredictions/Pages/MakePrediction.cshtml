@@ -9,6 +9,7 @@
 </div>
 
 <form method="post">
+    <h3>Your details</h3>
     <div class="form-control">
         <label for="forename">Forename&nbsp;</label>
         <input type="text" id="forename" name="forename" placeholder="Forename" alt="Enter your first name" />
@@ -19,6 +20,7 @@
         <input type="text" id="surname" name="surname" placeholder="Surname" alt="Enter your last name" />
     </div>
 
+    <h3>Your predictions</h3>
     <div class="form-control">
         <label for="gender">Gender</label>
         <input type="radio" id="gender" name="gender" value="Male" checked alt="What gender do you think the baby will be?" />&nbsp;Male
@@ -26,8 +28,15 @@
     </div>
 
     <div class="form-control">
-        <label for="birthdateandtime">Birth Date</label>
-        <input type="datetime" id="birthdateandtime" name="birthdateandtime" alt="What date and time do you think the baby will be born at?" />
+        <label for="birthdate">Birth Date</label>
+        <input type="date" id="birthdate" name="birthdate" placeholder="dd/MM/yyyy" alt="What date do you think the baby will be born on?" />
+        <span class="text-muted">e.g. 13/11/2018</span>
+    </div>
+
+    <div class="form-control">
+        <label for="birthtime">Birth Time</label>
+        <input type="time" id="birthtime" name="birthtime" placeholder="HH:mm" alt="What time do you think the baby will be born at?" />
+        <span class="text-muted">e.g. 17:30 - note this is a 24-hour time format</span>
     </div>
 
     <div class="form-control">
