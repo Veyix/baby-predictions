@@ -1,5 +1,51 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Predictions";
 }
+
+<div class="predictions">
+    <div class="row">
+        <div class="col-md-4">
+            Person
+        </div>
+        <div class="col-md-2">
+            Gender
+        </div>
+        <div class="col-md-2">
+            Date
+        </div>
+        <div class="col-md-2">
+            Time
+        </div>
+        <div class="col-md-2">
+            Weight
+        </div>
+    </div>
+
+    @foreach (var prediction in Model.Predictions)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <span>
+                    @prediction.Forename
+                    @prediction.Surname
+                </span>
+            </div>
+            <div class="col-md-2">
+                @prediction.Gender
+            </div>
+            <div class="col-md-2">
+                @prediction.BirthDate.ToString("dd MMM yy")
+            </div>
+            <div class="col-md-2">
+                @prediction.BirthTime.ToString(@"hh\:mm")
+            </div>
+            <div class="col-md-2">
+                @prediction.BirthWeightInPounds lbs
+                &nbsp;
+                @prediction.BirthWeightInOuncesLessPounds oz
+            </div>
+        </div>
+    }
+</div>
