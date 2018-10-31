@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS "Prediction" (
 	BirthDate   timestamp with time zone	not null,
     BirthWeight int                         not null,
     Gender      int                         not null,
+	HasPaid		bool						not null,
     CreatedDate timestamp with time zone    not null default now()
 );

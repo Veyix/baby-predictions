@@ -12,6 +12,7 @@ namespace BabyPredictions.Domain
         public Gender Gender { get; set; }
         public DateTimeOffset BirthDate { get; set; }
         public int BirthWeightInOunces { get; set; }
+        public bool HasPaid { get; set; }
 
         public TimeSpan BirthTime => BirthDate.TimeOfDay;
         public int BirthWeightInPounds => (int)Math.Floor(BirthWeightInOunces / OuncesInPound);

@@ -23,6 +23,7 @@ namespace BabyPredictions.Domain
             predictionBuilder.Property(x => x.Gender).HasColumnName("gender");
             predictionBuilder.Property(x => x.BirthDate).HasColumnName("birthdate");
             predictionBuilder.Property(x => x.BirthWeightInOunces).HasColumnName("birthweight");
+            predictionBuilder.Property(x => x.HasPaid).HasColumnName("haspaid");
 
             predictionBuilder.Ignore(x => x.BirthTime);
             predictionBuilder.Ignore(x => x.BirthWeightInPounds);
