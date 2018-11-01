@@ -25,7 +25,7 @@ namespace BabyPredictions.Pages
         [Required(ErrorMessage = "Please enter a valid authentication code")]
         public string AdminCode { get; set; }
 
-        public ActionResult OnPost()
+        public async Task<ActionResult> OnPost()
         {
             if (!IsValidCode())
             {
@@ -43,7 +43,7 @@ namespace BabyPredictions.Pages
                 returnUrl = values.First();
             }
 
-            Login(returnUrl);
+            await Login(returnUrl);
 
             return LocalRedirect(returnUrl);
         }
@@ -51,7 +51,7 @@ namespace BabyPredictions.Pages
         private bool IsValidCode() =>
             !String.IsNullOrWhiteSpace(AdminCode) && AdminCode == _settings.AdminCode;
 
-        private void Login(string redirectUri)
+        private async Task Login(string redirectUri)
         {
             var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, "Admin"));
@@ -66,7 +66,7 @@ namespace BabyPredictions.Pages
                 IsPersistent = true
             };
 
-            SignIn(principal, properties, CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
         }
     }
 }
