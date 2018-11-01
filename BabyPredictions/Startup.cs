@@ -51,6 +51,7 @@ namespace BabyPredictions
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizePage("/Admin");
+                    options.Conventions.AuthorizePage("/Birth");
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
