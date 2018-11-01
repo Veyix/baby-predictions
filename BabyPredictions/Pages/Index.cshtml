@@ -4,48 +4,43 @@
     ViewData["Title"] = "Predictions";
 }
 
-<div class="predictions">
-    <div class="row">
-        <div class="col-md-4">
-            Person
-        </div>
-        <div class="col-md-2">
-            Gender
-        </div>
-        <div class="col-md-2">
-            Date
-        </div>
-        <div class="col-md-2">
-            Time
-        </div>
-        <div class="col-md-2">
-            Weight
-        </div>
-    </div>
-
-    @foreach (var prediction in Model.Predictions)
-    {
-        <div class="row">
-            <div class="col-md-4">
-                <span>
-                    @prediction.Forename
-                    @prediction.Surname
-                </span>
-            </div>
-            <div class="col-md-2">
-                @prediction.Gender
-            </div>
-            <div class="col-md-2">
-                @prediction.BirthDate.ToString("dd MMM yy")
-            </div>
-            <div class="col-md-2">
-                @prediction.BirthTime.ToString(@"hh\:mm")
-            </div>
-            <div class="col-md-2">
-                @prediction.BirthWeightInPounds lbs
-                &nbsp;
-                @prediction.BirthWeightInOuncesLessPounds oz
-            </div>
-        </div>
-    }
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Person</th>
+                <th>Gender</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prediction in Model.Predictions)
+            {
+                <tr>
+                    <td>
+                        <span>
+                            @prediction.Forename
+                            @prediction.Surname
+                        </span>
+                    </td>
+                    <td>
+                        @prediction.Gender
+                    </td>
+                    <td>
+                        @prediction.BirthDate.ToString("dd MMM yy")
+                    </td>
+                    <td>
+                        @prediction.BirthTime.ToString(@"hh\:mm")
+                    </td>
+                    <td>
+                        @prediction.BirthWeightInPounds lbs
+                        &nbsp;
+                        @prediction.BirthWeightInOuncesLessPounds oz
+                    </td>
+                </tr>
+            }      
+        </tbody>
+    </table>
 </div>
