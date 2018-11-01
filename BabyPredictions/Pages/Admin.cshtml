@@ -58,15 +58,33 @@
                         @prediction.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")
                     </td>
                     <td>
-                        <form method="post">
-                            <button type="submit"
-                                    class="btn btn-default"
-                                    asp-route-id="@prediction.Id"
-                                    asp-page-handler="Delete">
+                        <div class="btn-toolbar" role="toolbar">
 
-                                Delete
-                            </button>
-                        </form>
+                            <!-- Delete -->
+                            <form method="post">
+                                <button type="submit"
+                                        class="btn btn-default"
+                                        asp-route-id="@prediction.Id"
+                                        asp-page-handler="Delete">
+
+                                    Delete
+                                </button>
+                            </form>
+
+                            <!-- Mark as paid -->
+                            @if (!prediction.HasPaid)
+                            {
+                                <form method="post">
+                                    <button type="submit"
+                                            class="btn btn-default"
+                                            asp-route-id="@prediction.Id"
+                                            asp-page-handler="Paid">
+
+                                        Paid        
+                                    </button>
+                                </form>
+                            }
+                        </div>
                     </td>
                 </tr>
             }      

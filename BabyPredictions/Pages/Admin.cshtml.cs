@@ -35,5 +35,21 @@ namespace BabyPredictions.Pages
 
             return RedirectToPage();
         }
+
+        public ActionResult OnPostPaid(int id)
+        {
+            var prediction = _context.Set<Prediction>()
+                .SingleOrDefault(x => x.Id == id);
+
+            if (prediction != null)
+            {
+                prediction.HasPaid = true;
+
+                _context.Update(prediction);
+                _context.SaveChanges();
+            }
+
+            return RedirectToPage();
+        }
     }
 }
