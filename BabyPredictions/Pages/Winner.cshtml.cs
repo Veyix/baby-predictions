@@ -15,10 +15,18 @@ namespace BabyPredictions.Pages
             _context = context;
         }
         
+        public Birth Birth { get; private set; }
         public IEnumerable<Winner> Winners { get; private set; }
 
         public ActionResult OnGet()
         {
+            Birth = _context.Set<Birth>().SingleOrDefault();
+
+            if (Birth == null)
+            {
+                return RedirectToPage("Index");
+            }
+
             var winners = _context.Set<Winner>()
                 .OrderBy(x => x.Position)
                 .ToArray();

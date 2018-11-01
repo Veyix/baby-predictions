@@ -4,32 +4,88 @@
     ViewData["Title"] = "Winner";
 }
 
-<div class="panel">
-    <div class="panel-body">
-        @foreach (var winner in Model.Winners)
-        {
-            <div class="row">
-                <div class="text-center">
-                    @if (winner.Position == 1)
-                    {
-                        <h4>
-                            Winner: @($"{winner.Forename} {winner.Surname}")
-                        </h4>
-                    }
-                    else if (winner.Position == 2)
-                    {
-                        <p>
-                            Second Place: @($"{winner.Forename} {winner.Surname}")
-                        </p>
-                    }
-                    else
-                    {
-                        <p>
-                            Third Place: @($"{winner.Forename} {winner.Surname}")
-                        </p>
-                    }
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div class="panel">
+            <div class="panel-header">
+                <h3 class="text-center">Birth</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <h5>
+                        <b class="col-xs-6 text-right">Gender&nbsp;</b>
+                        <span class="col-xs-6">
+                            @Model.Birth.Gender
+                        </span>
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <h5>
+                        <b class="col-xs-6 text-right">Birth Date</b>
+                        <span class="col-xs-6">
+                            @Model.Birth.BirthDate.ToString("dd MMM yyyy")
+                        </span>
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <h5>
+                        <b class="col-xs-6 text-right">Birth Time</b>
+                        <span class="col-xs-6">
+                            @Model.Birth.BirthTime.ToString(@"hh\:mm")
+                        </span>
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <h5>
+                        <b class="col-xs-6 text-right">Weight</b>
+                        <span class="col-xs-6">
+                            @(Model.Birth.BirthWeightInPounds) lbs @(Model.Birth.BirthWeightInOuncesLessPounds) oz
+                        </span>
+                    </h5>
                 </div>
             </div>
-        }
+        </div>
     </div>
+
+    <div class="col-md-5">
+        <div class="panel">
+            <div class="panel-header">
+                <h3 class="text-center">Winners</h3>
+            </div>
+
+            <div class="panel-body">
+                @foreach (var winner in Model.Winners)
+                {
+                    <div class="row">
+                        <div class="text-center">
+                            @if (winner.Position == 1)
+                            {
+                                <h4>
+                                    Winner: @($"{winner.Forename} {winner.Surname}") (@($"{winner.Points} points"))
+                                </h4>
+                            }
+                            else if (winner.Position == 2)
+                            {
+                                <p>
+                                    Second Place: @($"{winner.Forename} {winner.Surname}") (@($"{winner.Points} points"))
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    Third Place: @($"{winner.Forename} {winner.Surname}") (@($"{winner.Points} points"))
+                                </p>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
 </div>
