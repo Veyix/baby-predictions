@@ -24,6 +24,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\001-Prediction.table.sql" />
     <EmbeddedResource Include="Scripts\002-Birth.table.sql" />
+    <EmbeddedResource Include="Scripts\003-Winner.table.sql" />
   </ItemGroup>
 
 </Project>
