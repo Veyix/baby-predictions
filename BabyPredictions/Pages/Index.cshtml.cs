@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BabyPredictions.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BabyPredictions.Pages
@@ -16,9 +17,22 @@ namespace BabyPredictions.Pages
 
         public IEnumerable<Prediction> Predictions { get; private set; }
 
-        public void OnGet()
+        public ActionResult OnGet()
         {
+            if (IsThereAWinner())
+            {
+                return RedirectToPage("Winner");
+            }
+
             Predictions = _context.Set<Prediction>().ToArray();
+
+            return Page();
+        }
+
+        private bool IsThereAWinner()
+        {
+            var winners = _context.Set<Winner>().ToArray();
+            return winners.Any();
         }
     }
 }

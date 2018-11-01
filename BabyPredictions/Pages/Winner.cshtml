@@ -1,0 +1,33 @@
+@page
+@model WinnerModel
+@{
+    ViewData["Title"] = "Winner";
+}
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="text-center">
+                <h4>
+                    Winner: @Model.FirstPlaceWinnerName
+                </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <p>
+                    Second Place: @Model.SecondPlaceWinnerName
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <p>
+                    Third Place: @Model.ThirdPlaceWinnerName
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
