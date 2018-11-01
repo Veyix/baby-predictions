@@ -42,9 +42,19 @@ namespace BabyPredictions.Pages
                 return Page();
             }
 
-            // TODO: Submit.
+            var birth = new Birth
+            {
+                Gender = Gender,
+                BirthDate = BirthDate.Add(BirthTime),
+                BirthWeightInOunces = (WeightInPounds * 16) + WeightInOunces
+            };
 
-            return RedirectToPage();
+            _context.Add(birth);
+            _context.SaveChanges();
+
+            // TODO: Calculate winner.
+
+            return RedirectToPage("Index");
         }
     }
 }
