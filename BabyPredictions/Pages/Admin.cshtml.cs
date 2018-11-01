@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BabyPredictions.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BabyPredictions.Pages
@@ -14,11 +15,25 @@ namespace BabyPredictions.Pages
             _context = context;
         }
 
-        public IEnumerable<Prediction> Predictions { get; private set; }
+        public IEnumerable<Prediction> Predictions { get; private set; } = new Prediction[0];
 
         public void OnGet()
         {
             Predictions = _context.Set<Prediction>().ToArray();
+        }
+
+        public ActionResult OnPostDelete(int id)
+        {
+            var prediction = _context.Set<Prediction>()
+                .SingleOrDefault(x => x.Id == id);
+
+            if (prediction != null)
+            {
+                _context.Remove(prediction);
+                _context.SaveChanges();
+            }
+
+            return RedirectToPage();
         }
     }
 }
