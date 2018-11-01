@@ -1,0 +1,25 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="admin">
+    <form method="post">
+        <div class="form-group">
+            <label for="admincode">Code</label>
+            <input id="admincode"
+                    name="admincode"
+                    class="form-control"
+                    type="password"
+                    placeholder="Please enter your admin authorization code" />
+            <span asp-validation-for="AdminCode" class="alert-danger"></span>
+        </div>
+
+        <button type="button" class="btn btn-primary">
+            Submit
+        </button>
+
+        @Html.AntiForgeryToken()
+    </form>
+</div>

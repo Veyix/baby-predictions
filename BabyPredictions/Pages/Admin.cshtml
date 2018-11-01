@@ -1,0 +1,46 @@
+@page
+@model AdminModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Person</th>
+                <th>Gender</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prediction in Model.Predictions)
+            {
+                <tr>
+                    <td>
+                        <span>
+                            @prediction.Forename
+                            @prediction.Surname
+                        </span>
+                    </td>
+                    <td>
+                        @prediction.Gender
+                    </td>
+                    <td>
+                        @prediction.BirthDate.ToString("dd MMM yy")
+                    </td>
+                    <td>
+                        @prediction.BirthTime.ToString(@"hh\:mm")
+                    </td>
+                    <td>
+                        @prediction.BirthWeightInPounds lbs
+                        &nbsp;
+                        @prediction.BirthWeightInOuncesLessPounds oz
+                    </td>
+                </tr>
+            }      
+        </tbody>
+    </table>
+</div>
