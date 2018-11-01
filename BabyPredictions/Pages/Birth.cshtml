@@ -15,9 +15,11 @@
                id="gender"
                name="gender"
                value="Male"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                checked />&nbsp;Male
         <input type="radio"
                id="gender"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                name="gender"
                value="Female" />&nbsp;Female
         <span asp-validation-for="Gender" class="alert-danger"></span>
@@ -28,6 +30,7 @@
         <input type="date"
                id="birthdate"
                class="form-control"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                name="birthdate"
                placeholder="dd/MM/yyyy" />
         <span class="text-muted">e.g. 13/11/2018</span>
@@ -38,6 +41,7 @@
         <label for="birthtime">Birth Time</label>
         <input type="time"
                class="form-control"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                id="birthtime"
                name="birthtime"
                placeholder="HH:mm" />
@@ -49,6 +53,7 @@
         <label for="weightinpounds">Birth Weight</label>
         <input type="number"
                class="form-control"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                id="weightinpounds"
                name="weightinpounds"
                placeholder="0 pounds" />
@@ -56,6 +61,7 @@
         <input type="number"
                class="form-control"
                id="weightinounces"
+               @(Model.HaveDetailsAlreadyBeenEntered ? "disabled = 'disabled'" : "")
                name="weightinounces"
                placeholder="0 ounces" />
 

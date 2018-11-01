@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using BabyPredictions.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,11 +10,15 @@ namespace BabyPredictions.Pages
     public class BirthModel : PageModel
     {
         private readonly DatabaseContext _context;
+        private readonly WinnerPicker _winnerPicker;
 
-        public BirthModel(DatabaseContext context)
+        public BirthModel(DatabaseContext context, WinnerPicker winnerPicker)
         {
             _context = context;
+            _winnerPicker = winnerPicker;
         }
+
+        public bool HaveDetailsAlreadyBeenEntered { get; private set; }
 
         [BindProperty]
         [Required(ErrorMessage = "Select the gender of the baby")]
@@ -35,6 +40,11 @@ namespace BabyPredictions.Pages
         [Required(ErrorMessage = "Enter the baby's weight (number of ounces not in whole pounds)")]
         public int WeightInOunces { get; set; }
 
+        public void OnGet()
+        {
+            HaveDetailsAlreadyBeenEntered = _context.Set<Birth>().SingleOrDefault() != null;
+        }
+
         public ActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -52,7 +62,7 @@ namespace BabyPredictions.Pages
             _context.Add(birth);
             _context.SaveChanges();
 
-            // TODO: Calculate winner.
+            _winnerPicker.PickWinner();
 
             return RedirectToPage("Index");
         }

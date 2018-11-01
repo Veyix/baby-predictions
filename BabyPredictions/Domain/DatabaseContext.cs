@@ -13,6 +13,7 @@ namespace BabyPredictions.Domain
         {
             ConfigurePredictionModel(modelBuilder);
             ConfigureBirthModel(modelBuilder);
+            ConfigureWinnerModel(modelBuilder);
         }
 
         private static void ConfigurePredictionModel(ModelBuilder modelBuilder)
@@ -57,6 +58,22 @@ namespace BabyPredictions.Domain
             birthBuilder.Ignore(x => x.BirthWeightInOuncesLessPounds);
 
             birthBuilder.ToTable("Birth");
+        }
+
+        private static void ConfigureWinnerModel(ModelBuilder modelBuilder)
+        {
+            var winnerBuilder = modelBuilder.Entity<Winner>();
+            winnerBuilder.HasKey(x => x.Id);
+
+            winnerBuilder.Property(x => x.Id)
+                .HasColumnName("id")
+                .ValueGeneratedOnAdd();
+
+            winnerBuilder.Property(x => x.Forename).HasColumnName("forename");
+            winnerBuilder.Property(x => x.Surname).HasColumnName("surname");
+            winnerBuilder.Property(x => x.Position).HasColumnName("position");
+
+            winnerBuilder.ToTable("Birth");
         }
     }
 }
