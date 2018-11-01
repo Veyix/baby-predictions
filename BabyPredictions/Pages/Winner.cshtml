@@ -6,28 +6,30 @@
 
 <div class="panel">
     <div class="panel-body">
-        <div class="row">
-            <div class="text-center">
-                <h4>
-                    Winner: @Model.FirstPlaceWinnerName
-                </h4>
+        @foreach (var winner in Model.Winners)
+        {
+            <div class="row">
+                <div class="text-center">
+                    @if (winner.Position == 1)
+                    {
+                        <h4>
+                            Winner: @($"{winner.Forename} {winner.Surname}")
+                        </h4>
+                    }
+                    else if (winner.Position == 2)
+                    {
+                        <p>
+                            Second Place: @($"{winner.Forename} {winner.Surname}")
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            Third Place: @($"{winner.Forename} {winner.Surname}")
+                        </p>
+                    }
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="text-center">
-                <p>
-                    Second Place: @Model.SecondPlaceWinnerName
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="text-center">
-                <p>
-                    Third Place: @Model.ThirdPlaceWinnerName
-                </p>
-            </div>
-        </div>
+        }
     </div>
 </div>

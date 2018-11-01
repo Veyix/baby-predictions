@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using BabyPredictions.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -13,31 +14,21 @@ namespace BabyPredictions.Pages
         {
             _context = context;
         }
-
-        public string FirstPlaceWinnerName { get; private set; }
-        public string SecondPlaceWinnerName { get; private set; }
-        public string ThirdPlaceWinnerName { get; private set; }
+        
+        public IEnumerable<Winner> Winners { get; private set; }
 
         public ActionResult OnGet()
         {
             var winners = _context.Set<Winner>()
                 .OrderBy(x => x.Position)
-                .Take(3)
                 .ToArray();
 
             if (!winners.Any())
             {
                 return RedirectToPage("Index");
             }
-
-            var firstPlaceWinner = winners[0];
-            FirstPlaceWinnerName = $"{firstPlaceWinner.Forename} {firstPlaceWinner.Surname}";
-
-            var secondPlaceWinner = winners[1];
-            SecondPlaceWinnerName = $"{secondPlaceWinner.Forename} {secondPlaceWinner.Surname}";
-
-            var thirdPlaceWinner = winners[2];
-            ThirdPlaceWinnerName = $"{thirdPlaceWinner.Forename} {thirdPlaceWinner.Surname}";
+            
+            Winners = winners;
 
             return Page();
         }

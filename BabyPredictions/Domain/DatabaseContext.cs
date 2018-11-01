@@ -72,6 +72,7 @@ namespace BabyPredictions.Domain
             winnerBuilder.Property(x => x.Forename).HasColumnName("forename");
             winnerBuilder.Property(x => x.Surname).HasColumnName("surname");
             winnerBuilder.Property(x => x.Position).HasColumnName("position");
+            winnerBuilder.Property(x => x.Points).HasColumnName("points");
 
             winnerBuilder.ToTable("Winner");
         }
