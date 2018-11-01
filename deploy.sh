@@ -26,6 +26,6 @@ echo Running nginx configuration deployment on the server...
 ssh root@$server 'bash -s' < ./deployment/deploy-nginx-configuration.sh
 
 echo Running health check...
-curl http://baby.sladesoftwareltd.com/
+curl https://baby.sladesoftwareltd.com/
 
 echo Deployment complete!
