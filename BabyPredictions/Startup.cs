@@ -58,7 +58,7 @@ namespace BabyPredictions
             string connectionString = Configuration.GetConnectionString("Database");
             services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddTransient<WinnerPicker>();
+            services.AddTransient<WinnerCalculator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

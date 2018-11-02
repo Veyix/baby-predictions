@@ -10,12 +10,12 @@ namespace BabyPredictions.Pages
     public class BirthModel : PageModel
     {
         private readonly DatabaseContext _context;
-        private readonly WinnerPicker _winnerPicker;
+        private readonly WinnerCalculator _winnerCalculator;
 
-        public BirthModel(DatabaseContext context, WinnerPicker winnerPicker)
+        public BirthModel(DatabaseContext context, WinnerCalculator winnerCalculator)
         {
             _context = context;
-            _winnerPicker = winnerPicker;
+            _winnerCalculator = winnerCalculator;
         }
 
         public bool HaveDetailsAlreadyBeenEntered { get; private set; }
@@ -62,7 +62,7 @@ namespace BabyPredictions.Pages
             _context.Add(birth);
             _context.SaveChanges();
 
-            _winnerPicker.PickWinner();
+            _winnerCalculator.CalculateWinners();
 
             return RedirectToPage("Index");
         }
