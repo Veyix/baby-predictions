@@ -7,11 +7,25 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BabyPredictions/BabyPredictions.csproj"
+                "${workspaceFolder}/BabyPredictions.sln"
             ],
             "problemMatcher": "$msCompile",
             "group": {
                 "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/BabyPredictions.Tests/BabyPredictions.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
                 "isDefault": true
             }
         }
