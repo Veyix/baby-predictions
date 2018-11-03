@@ -24,7 +24,9 @@ namespace BabyPredictions.Pages
                 return RedirectToPage("Winner");
             }
 
-            Predictions = _context.Set<Prediction>().ToArray();
+            Predictions = _context.Set<Prediction>()
+                .OrderBy(x => x.Id)
+                .ToArray();
 
             return Page();
         }

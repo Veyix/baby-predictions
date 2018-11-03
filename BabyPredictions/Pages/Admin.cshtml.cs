@@ -19,7 +19,9 @@ namespace BabyPredictions.Pages
 
         public void OnGet()
         {
-            Predictions = _context.Set<Prediction>().ToArray();
+            Predictions = _context.Set<Prediction>()
+                .OrderBy(x => x.Id)
+                .ToArray();
         }
 
         public ActionResult OnPostDelete(int id)
