@@ -5,7 +5,7 @@ using Xunit;
 namespace BabyPredictions.Tests.Domain
 {
     public class BirthTimePointsCalculatorTests
-    {        
+    {
         [Fact]
         public void CalculatePoints_OnePredictionOnBirthTime_ThreePoints()
         {
