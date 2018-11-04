@@ -6,6 +6,20 @@ namespace BabyPredictions.Domain
     {
         private const double OuncesInPound = 16d;
 
+        public Prediction()
+        {
+            // Empty parameterless constructor for serialization
+        }
+
+        public Prediction(string forename, string surname, Gender gender, DateTimeOffset birthDate, int birthWeightInOunces)
+        {
+            Forename = forename;
+            Surname = surname;
+            Gender = gender;
+            BirthDate = birthDate;
+            BirthWeightInOunces = birthWeightInOunces;
+        }
+
         public int Id { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }

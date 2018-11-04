@@ -5,6 +5,18 @@ namespace BabyPredictions.Domain
     public class Birth
     {
         private const double OuncesInPound = 16d;
+
+        public Birth()
+        {
+            // Empty parameterless constructor for serialization
+        }
+
+        public Birth(Gender gender, DateTimeOffset birthDate, int birthWeightInOunces)
+        {
+            Gender = gender;
+            BirthDate = birthDate;
+            BirthWeightInOunces = birthWeightInOunces;
+        }
         
         public int Id { get; set; }
         public Gender Gender { get; set; }

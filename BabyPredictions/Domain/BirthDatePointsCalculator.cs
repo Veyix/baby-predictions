@@ -32,7 +32,7 @@ namespace BabyPredictions.Domain
 
         private static int GetDaysFromBirthDate(DateTimeOffset birthDate, DateTimeOffset predictedBirthDate)
         {
-            return (int)Math.Abs((birthDate - predictedBirthDate).TotalDays);
+            return (int)Math.Abs((birthDate.Date - predictedBirthDate.Date).TotalDays);
         }
     }
 }
